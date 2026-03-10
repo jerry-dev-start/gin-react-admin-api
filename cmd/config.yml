@@ -1,0 +1,12 @@
+server:
+  host: "127.0.0.1"
+  port: 8888
+  db-type: "mysql"
+  prefix: "gra"
+mysql:
+  username: "gin-react_admin"
+  password: "Tr4i7yNccYnXC2HC"
+  host: "123.207.197.234"
+  port: "3306 "
+  db-name: "gin-react_admin"
+  engine: "innoDB"
