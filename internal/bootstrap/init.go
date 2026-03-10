@@ -11,6 +11,5 @@ func InitComponent() {
 	configs.InitConfig()
 	// 初始化日志框架
 	log.InitLogger()
-
-	global.Log.Info("init component success.")
+	global.Log.Info("init component successfully.")
 }

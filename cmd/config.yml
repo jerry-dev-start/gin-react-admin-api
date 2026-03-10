@@ -2,7 +2,8 @@ server:
   host: "127.0.0.1"
   port: 8888
   db-type: "mysql"
-  prefix: "gra"
+  prefix: "/gra"
+  model: "debug"
 mysql:
   username: "gin-react_admin"
   password: "Tr4i7yNccYnXC2HC"

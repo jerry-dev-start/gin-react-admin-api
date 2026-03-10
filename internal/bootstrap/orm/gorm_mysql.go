@@ -19,11 +19,11 @@ func GormMysqlInit() *gorm.DB {
 func doMysqlInit(m *configs.Mysql) *gorm.DB {
 	// 生成DSN
 	dsn := fmt.Sprintf("%s:%s@tcp(%s:%s)/%s?charset=utf8&parseTime=True&loc=Local",
-		m.Username,
-		m.Password,
-		m.Host,
-		m.Port,
-		m.DbName)
+		m.GetUsername(),
+		m.GetPassword(),
+		m.GetHost(),
+		m.GetPort(),
+		m.GetDbName())
 	mysqlConfig := mysql.Config{
 		DSN:                       dsn,   // DSN data source name
 		DefaultStringSize:         191,   // string 类型字段的默认长度
@@ -32,10 +32,10 @@ func doMysqlInit(m *configs.Mysql) *gorm.DB {
 	if db, err := gorm.Open(mysql.New(mysqlConfig), &gorm.Config{}); err != nil {
 		panic(err)
 	} else {
-		db.InstanceSet("gorm:table_options", "ENGINE="+m.Engine)
+		db.InstanceSet("gorm:table_options", "ENGINE="+m.GetEngine())
 		sqlDB, _ := db.DB()
-		sqlDB.SetMaxIdleConns(m.MaxIdleConns)
-		sqlDB.SetMaxOpenConns(m.MaxOpenConns)
+		sqlDB.SetMaxIdleConns(m.GetMaxIdleConns())
+		sqlDB.SetMaxOpenConns(m.GetMaxIdleConns())
 		return db
 	}
 }
