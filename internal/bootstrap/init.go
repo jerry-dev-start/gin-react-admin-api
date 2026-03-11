@@ -4,6 +4,7 @@ import (
 	"apis/global"
 	"apis/internal/bootstrap/configs"
 	"apis/internal/bootstrap/log"
+	"apis/internal/bootstrap/orm"
 )
 
 func InitComponent() {
@@ -11,5 +12,7 @@ func InitComponent() {
 	configs.InitConfig()
 	// 初始化日志框架
 	log.InitLogger()
+	// 初始化 Gorm
+	orm.InitGorm()
 	global.Log.Info("init component successfully.")
 }
