@@ -3,9 +3,12 @@ package routers
 
 import (
 	bootRouter "apis/internal/bootstrap/router"
+	"apis/internal/routers/sso_route"
 	"apis/internal/routers/system_route"
 )
 
 func init() {
 	bootRouter.RegisterRouter(&system_route.RoleRouter{})
+	//单点登陆相关路由
+	bootRouter.RegisterRouter(&sso_route.SsoRouter{})
 }
