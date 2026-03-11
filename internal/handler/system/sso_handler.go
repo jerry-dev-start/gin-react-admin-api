@@ -5,6 +5,7 @@ import (
 	systemlogic "apis/internal/logic/system_logic"
 	"apis/model/common/response"
 
+	"github.com/casdoor/casdoor-go-sdk/casdoorsdk"
 	"github.com/gin-gonic/gin"
 )
 
@@ -28,10 +29,16 @@ func NewSsoHandler() *SsoHandler {
 // @Router /sso/login [post]
 func (s *SsoHandler) SsoLogin(gin *gin.Context) {
 
-	var req req.SsoLoginReq
-	if err := gin.ShouldBindJSON(&req); err != nil {
+	var ssoReq req.SsoLoginReq
+	if err := gin.ShouldBindJSON(&ssoReq); err != nil {
 		response.FailWithMessage("参数绑定失败", gin)
 		return
 	}
 
+	token, err := casdoorsdk.GetOAuthToken(ssoReq.Code, ssoReq.State)
+	if err != nil {
+		response.FailWithMessage(err.Error(), gin)
+		return
+	}
+	response.OkWithData(token, gin)
 }

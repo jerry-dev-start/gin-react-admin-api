@@ -4,6 +4,13 @@ server:
   db-type: "mysql"
   prefix: "/gra"
   model: "debug"
+  open-sso: true
+casdoor-config:
+  endpoint: "http://123.207.197.234:8000"
+  client-id: "813246115a8218f642ec"
+  client-secret: "8b4cff100950e4104d6f85543bea5fdd569ff34a"
+  organization-name: "vm_group"
+  application-name: "vm_manager"
 mysql:
   username: "gin-react_admin"
   password: "Tr4i7yNccYnXC2HC"

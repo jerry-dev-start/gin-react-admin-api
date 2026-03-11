@@ -5,6 +5,7 @@ import (
 	"apis/internal/bootstrap/configs"
 	"apis/internal/bootstrap/log"
 	"apis/internal/bootstrap/orm"
+	"apis/internal/bootstrap/sso"
 )
 
 func InitComponent() {
@@ -14,5 +15,10 @@ func InitComponent() {
 	log.InitLogger()
 	// 初始化 Gorm
 	orm.InitGorm()
+
+	//初始化单点登录
+	if global.Config.Server.GetOpenSso() {
+		sso.InitCasDoor(global.Config.CasdoorConfig)
+	}
 	global.Log.Info("init component successfully.")
 }

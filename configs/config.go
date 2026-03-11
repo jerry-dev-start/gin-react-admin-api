@@ -1,8 +1,9 @@
 package configs
 
 type Config struct {
-	Server *Server `mapstructure:"server"`
-	Mysql  *Mysql  `mapstructure:"mysql"`
+	Server        *Server        `mapstructure:"server"`
+	Mysql         *Mysql         `mapstructure:"mysql"`
+	CasdoorConfig *CasdoorConfig `mapstructure:"casdoor-config"`
 }
 
 type Server struct {
@@ -11,6 +12,14 @@ type Server struct {
 	DbType       *string `mapstructure:"db-type"`
 	RouterPrefix *string `mapstructure:"prefix"`
 	Model        *string `mapstructure:"model"`
+	OpenSso      *bool   `mapstructure:"open-sso"`
+}
+
+func (s *Server) GetOpenSso() bool {
+	if s.OpenSso == nil {
+		return false
+	}
+	return *s.OpenSso
 }
 
 func (s *Server) GetModel() string {
