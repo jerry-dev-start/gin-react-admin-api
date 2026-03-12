@@ -5,3 +5,7 @@ type SsoLoginReq struct {
 	State    string `json:"state"`
 	Verifier string `json:"verifier"`
 }
+
+type SsoRedirectUrlReq struct {
+	RedirectUrl string `json:"redirect_url" form:"redirect_url"`
+}

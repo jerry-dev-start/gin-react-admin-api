@@ -2,6 +2,7 @@ package system
 
 import (
 	"apis/internal/handler/system/req"
+	"apis/internal/handler/system/res"
 	systemlogic "apis/internal/logic/system_logic"
 	"apis/model/common/response"
 
@@ -34,11 +35,23 @@ func (s *SsoHandler) SsoLogin(gin *gin.Context) {
 		response.FailWithMessage("参数绑定失败", gin)
 		return
 	}
-
 	token, err := casdoorsdk.GetOAuthToken(ssoReq.Code, ssoReq.State)
 	if err != nil {
 		response.FailWithMessage(err.Error(), gin)
 		return
 	}
 	response.OkWithData(token, gin)
+}
+
+func (s *SsoHandler) RedirectUrl(gin *gin.Context) {
+	var ssoRedirectUrlReq req.SsoRedirectUrlReq
+	if err := gin.ShouldBindQuery(&ssoRedirectUrlReq); err != nil {
+		response.FailWithMessage(err.Error(), gin)
+		return
+	}
+	url := casdoorsdk.GetSigninUrl(ssoRedirectUrlReq.RedirectUrl)
+	ssoLoginRes := &res.SsoRedirectUrlRes{
+		Url: url,
+	}
+	response.OkWithData(ssoLoginRes, gin)
 }

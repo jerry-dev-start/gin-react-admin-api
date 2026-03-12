@@ -13,5 +13,6 @@ func (s *SsoRouter) Register(public, private *gin.RouterGroup) {
 	ssoGroup := public.Group("/sso")
 	{
 		ssoGroup.POST("/login", ssoHandler.SsoLogin)
+		ssoGroup.GET("/redirect-url", ssoHandler.RedirectUrl)
 	}
 }
