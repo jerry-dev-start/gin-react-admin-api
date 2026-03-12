@@ -1,9 +1,11 @@
 package configs
 
 type Config struct {
-	Server        *Server        `mapstructure:"server"`
-	Mysql         *Mysql         `mapstructure:"mysql"`
-	CasdoorConfig *CasdoorConfig `mapstructure:"casdoor-config"`
+	Server          *Server          `mapstructure:"server"`
+	Mysql           *Mysql           `mapstructure:"mysql"`
+	CasdoorConfig   *CasdoorConfig   `mapstructure:"casdoor-config"`
+	FileServer      *FileServer      `mapstructure:"fileserver"`
+	LocalFileServer *LocalFileServer `mapstructure:"local-file-server"`
 }
 
 type Server struct {

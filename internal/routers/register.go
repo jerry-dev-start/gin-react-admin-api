@@ -11,4 +11,6 @@ func init() {
 	bootRouter.RegisterRouter(&system_route.RoleRouter{})
 	//单点登陆相关路由
 	bootRouter.RegisterRouter(&sso_route.SsoRouter{})
+	//用户相关的路由
+	bootRouter.RegisterRouter(&system_route.UserRouter{})
 }

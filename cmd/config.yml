@@ -18,3 +18,9 @@ mysql:
   port: "3306"
   db-name: "gin-react_admin"
   engine: "innoDB"
+file-server:
+  type: "local"
+
+local-file-server:
+  file-path: ""
+  
