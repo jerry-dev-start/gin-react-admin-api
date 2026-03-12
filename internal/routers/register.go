@@ -13,4 +13,5 @@ func init() {
 	bootRouter.RegisterRouter(&sso_route.SsoRouter{})
 	//用户相关的路由
 	bootRouter.RegisterRouter(&system_route.UserRouter{})
+	bootRouter.RegisterRouter(&system_route.UploadFileRouter{})
 }
