@@ -15,5 +15,7 @@ func (u *UploadFileRouter) Register(public, private *gin.RouterGroup) {
 	{
 		fileGroup.POST("/uploadSimple", fileHandler.UploadSimple)
 		fileGroup.POST("/chunkInit", fileHandler.UploadChunkInit)
+		fileGroup.POST("/uploadChunk", fileHandler.UploadFileChunk)
+		fileGroup.POST("/chunkComplete", fileHandler.UploadChunkComplete)
 	}
 }

@@ -25,3 +25,10 @@ func (d FileData) GetFileByMd5(md5 string) (*system_model.FileModel, error) {
 	}
 	return &fileModel, nil
 }
+
+func (d FileData) SaveMergeCompleteFileInfo(record *system_model.FileModel) error {
+	if err := global.Db.Create(record).Error; err != nil {
+		return err
+	}
+	return nil
+}

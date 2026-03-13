@@ -5,5 +5,6 @@ type FileServer struct {
 }
 
 type LocalFileServer struct {
-	FilePath *string `mapstructure:"file-path"`
+	FilePath  *string `mapstructure:"file-path"`
+	FileChunk *string `mapstructure:"file-chunk"`
 }

@@ -23,3 +23,7 @@ func (f *FileLogic) GetFileByMd5(md5 string) (*system_model.FileModel, error) {
 		return result, nil
 	}
 }
+
+func (f *FileLogic) SaveMergeCompleteFileInfo(record *system_model.FileModel) error {
+	return f.fileData.SaveMergeCompleteFileInfo(record)
+}
