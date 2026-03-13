@@ -22,5 +22,6 @@ file-server:
   type: "local"
 
 local-file-server:
-  file-path: ""
+  file-path: "D:\\tmp\\gin-react-admin-temp"
+  file-chunk: "D:\\tmp\\gin-react-admin-temp\\chunk"
   
