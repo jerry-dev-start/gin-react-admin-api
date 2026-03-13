@@ -69,7 +69,7 @@ func (u *UploadFileHandler) UploadSimple(c *gin.Context) {
 // 3. 断点续传逻辑（可选）：返回已上传的分片索引，告知前端从哪个分片开始继续上传。
 func (u *UploadFileHandler) UploadChunkInit(c *gin.Context) {
 	var req req.InitUploadRequest
-	if err := c.ShouldBind(&req); err != nil {
+	if err := c.ShouldBindJSON(&req); err != nil {
 		response.FailWithMessage("参数缺失", c)
 		return
 	}
