@@ -25,3 +25,7 @@ func (d *UserData) CheckUserExistByUsername(username string) (bool, error) {
 	}
 	return true, nil
 }
+
+func (d *UserData) SaveUserInfo(model *system_model.User) error {
+	return nil
+}

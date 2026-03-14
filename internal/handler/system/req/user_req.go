@@ -17,5 +17,11 @@ type UserReq struct {
 // GenDatabaseModel 生成保存到数据库的对象
 func (u *UserReq) GenDatabaseModel() *system_model.User {
 
-	return nil
+	return &system_model.User{
+		Username:    u.Username,
+		Nickname:    u.Nickname,
+		PhoneNumber: &u.PhoneNumber,
+		AvatarURL:   u.AvatarUrl,
+		Birthday:    u.Birthday,
+	}
 }

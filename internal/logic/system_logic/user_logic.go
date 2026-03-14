@@ -17,7 +17,7 @@ func NewUserLogic() *UserLogic {
 }
 
 // SaveUserInfo 保存用户信息
-func (l UserLogic) SaveUserInfo(r *req.UserReq) error {
+func (l *UserLogic) SaveUserInfo(r *req.UserReq) error {
 	exist, err := l.userData.CheckUserExistByUsername(r.Username)
 	if err != nil {
 		return err
@@ -27,6 +27,7 @@ func (l UserLogic) SaveUserInfo(r *req.UserReq) error {
 	}
 
 	// 生成保存到数据库实体的对象
-
-	return exist
+	model := r.GenDatabaseModel()
+	err := l.userData.SaveUserInfo(model)
+	return nil
 }
