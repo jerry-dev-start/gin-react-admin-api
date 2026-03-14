@@ -3,6 +3,7 @@ package routers
 
 import (
 	bootRouter "apis/internal/bootstrap/router"
+	"apis/internal/routers/auth_route"
 	"apis/internal/routers/sso_route"
 	"apis/internal/routers/system_route"
 )
@@ -14,4 +15,5 @@ func init() {
 	//用户相关的路由
 	bootRouter.RegisterRouter(&system_route.UserRouter{})
 	bootRouter.RegisterRouter(&system_route.UploadFileRouter{})
+	bootRouter.RegisterRouter(&auth_route.AuthRoute{})
 }

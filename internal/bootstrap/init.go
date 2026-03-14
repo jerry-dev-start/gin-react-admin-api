@@ -5,6 +5,7 @@ import (
 	"apis/internal/bootstrap/configs"
 	"apis/internal/bootstrap/log"
 	"apis/internal/bootstrap/orm"
+	"apis/internal/bootstrap/snowflake"
 	"apis/internal/bootstrap/sso"
 )
 
@@ -15,6 +16,11 @@ func InitComponent() {
 	log.InitLogger()
 	// 初始化 Gorm
 	orm.InitGorm()
+
+	//初始化雪花算法
+	if err := snowflake.InitSnowflake("2001-01-01", 1); err != nil {
+		panic(err)
+	}
 
 	//初始化单点登录
 	if global.Config.Server.GetOpenSso() {

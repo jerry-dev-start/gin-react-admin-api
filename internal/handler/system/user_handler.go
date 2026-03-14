@@ -26,7 +26,8 @@ func (u *UserHandler) SaveUserInfo(r *gin.Context) {
 		return
 	}
 	if err := u.userLogic.SaveUserInfo(&userReq); err != nil {
-		response.FailWithMessage("用户保存失败", r)
+		response.FailWithMessage(err.Error(), r)
 		return
 	}
+	response.OkWithMessage("用户保存成功", r)
 }
